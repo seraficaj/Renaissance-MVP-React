@@ -13,9 +13,11 @@ const App = () => {
   const [updated, setUpdated] = useState(false);
 
   const getProjects = () => {
-    axios.get(`http://localhost:4000/projects`).then((res) => {
-      setProjects(res.data);
-    });
+    axios
+      .get(`http://https://sei-123-p3-backend.onrender.com/projects`)
+      .then((res) => {
+        setProjects(res.data);
+      });
   };
 
   // load in all Projects from API on Page Load

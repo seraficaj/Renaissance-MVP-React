@@ -10,7 +10,9 @@ import UpdateProjectForm from "./UpdateProjectForm";
 const ProjectCard = (props) => {
   const handleDelete = (project) => {
     axios
-      .delete(`http://localhost:4000/projects/${project._id}`)
+      .delete(
+        `http://https://sei-123-p3-backend.onrender.com/projects/${project._id}`
+      )
       .then(() => {
         props.setUpdated(!props.updated);
       })
@@ -19,9 +21,12 @@ const ProjectCard = (props) => {
 
   const handleComplete = (project) => {
     axios
-      .put(`http://localhost:4000/projects/${project._id}`, {
-        complete: !props.project.complete,
-      })
+      .put(
+        `http://https://sei-123-p3-backend.onrender.com/projects/${project._id}`,
+        {
+          complete: !props.project.complete,
+        }
+      )
       .then(() => {
         props.setUpdated(!props.updated);
       })

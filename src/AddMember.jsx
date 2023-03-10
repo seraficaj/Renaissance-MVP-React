@@ -11,9 +11,12 @@ const AddMember = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:4000/projects/${props.project._id}`, {
-        newMember: formData.newMember,
-      })
+      .put(
+        `http://https://sei-123-p3-backend.onrender.com/projects/${props.project._id}`,
+        {
+          newMember: formData.newMember,
+        }
+      )
       .then((res) => {
         props.setUpdated(!props.updated);
       })

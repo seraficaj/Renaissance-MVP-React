@@ -11,9 +11,12 @@ const UpdateProjectForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:4000/projects/${props.project._id}`, {
-        description: formData.description,
-      })
+      .put(
+        `http://https://sei-123-p3-backend.onrender.com/projects/${props.project._id}`,
+        {
+          description: formData.description,
+        }
+      )
       .then((res) => {
         props.setUpdated(!props.updated);
       })

@@ -13,7 +13,7 @@ const NewProjectForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:4000/projects", {
+      .post("http://https://sei-123-p3-backend.onrender.com/projects", {
         description: formData.description,
         name: formData.name,
       })
