@@ -3,6 +3,8 @@ import { Button, ListGroupItem } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
+
+import AddMember from "./AddMember";
 import UpdateProjectForm from "./UpdateProjectForm";
 
 const ProjectCard = (props) => {
@@ -27,14 +29,19 @@ const ProjectCard = (props) => {
               <ListGroupItem>{person}</ListGroupItem>
             ))}
           </ListGroup>
-          <Button onClick={() => handleDelete(props.project)} variant="danger">
-            Delete
-          </Button>
+          <AddMember
+            project={props.project}
+            setUpdated={props.setUpdated}
+            updated={props.updated}
+          />
           <UpdateProjectForm
             project={props.project}
             setUpdated={props.setUpdated}
             updated={props.updated}
           />
+          <Button onClick={() => handleDelete(props.project)} variant="danger">
+            Delete
+          </Button>
         </Card.Body>
       </Card>
     </Col>
