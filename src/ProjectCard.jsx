@@ -1,5 +1,5 @@
 import axios from "axios";
-import { Button, ListGroupItem } from "react-bootstrap";
+import { Button, ButtonGroup, ListGroupItem } from "react-bootstrap";
 import { Card } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { ListGroup } from "react-bootstrap";
@@ -17,11 +17,25 @@ const ProjectCard = (props) => {
       .catch((err) => console.log(err));
   };
 
+  const handleComplete = (project) => {
+    axios
+      .put(`http://localhost:4000/projects/${project._id}`, {
+        complete: !props.project.complete,
+      })
+      .then(() => {
+        props.setUpdated(!props.updated);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <Col sm={6} md={4}>
       <Card>
         <Card.Body>
           <Card.Title>{props.project.name}</Card.Title>
+          <Card.Title>
+            Complete? {props.project.complete ? "Complete" : "In Progress"}
+          </Card.Title>
           <Card.Text>{props.project.description}</Card.Text>
           <Card.Text>Team Members</Card.Text>
           <ListGroup>
@@ -39,9 +53,20 @@ const ProjectCard = (props) => {
             setUpdated={props.setUpdated}
             updated={props.updated}
           />
-          <Button onClick={() => handleDelete(props.project)} variant="danger">
-            Delete
-          </Button>
+          <ButtonGroup>
+            <Button
+              variant="secondary"
+              onClick={() => handleComplete(props.project)}
+            >
+              Complete? {props.project.complete ? "No" : "Yes"}
+            </Button>
+            <Button
+              onClick={() => handleDelete(props.project)}
+              variant="danger"
+            >
+              Delete
+            </Button>
+          </ButtonGroup>
         </Card.Body>
       </Card>
     </Col>
